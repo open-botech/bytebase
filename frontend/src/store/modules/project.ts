@@ -253,7 +253,6 @@ const actions = {
     await axios.post(`/api/project/${projectId}/syncmember`);
     const updatedProject = await dispatch("fetchProjectById", projectId);
 
-    console.log(updatedProject);
     return updatedProject;
   },
 

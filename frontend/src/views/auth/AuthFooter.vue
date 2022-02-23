@@ -12,9 +12,7 @@
         {{ item.label }}
       </a>
     </p>
-    <p class="text-sm text-gray-400 mt-1">
-      &copy; {{ year }} Bytebase. All rights reserved.
-    </p>
+
   </div>
 </template>
 

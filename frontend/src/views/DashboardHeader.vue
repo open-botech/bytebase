@@ -11,34 +11,37 @@
         </router-link>
       </div>
       <div class="hidden sm:block">
-        <div class="ml-6 flex items-baseline space-x-1 whitespace-nowrap">
+        <div class="ml-6 flex items-baseline space-x-1 whitespace-nowrap" >
           <router-link
             v-if="showDBAItem"
             to="/issue"
             class="bar-link px-2 py-2 rounded-md"
+            style="color: white"
             >{{ $t("common.issues") }}</router-link
           >
 
-          <router-link to="/project" class="bar-link px-2 py-2 rounded-md">
+          <router-link to="/project" class="bar-link px-2 py-2 rounded-md" style="color: white">
             {{ $t("common.projects") }}
           </router-link>
 
-          <router-link to="/db" class="bar-link px-2 py-2 rounded-md">{{
+          <router-link to="/db" class="bar-link px-2 py-2 rounded-md" style="color: white"> {{
             $t("common.databases")
           }}</router-link>
 
-          <router-link to="/instance" class="bar-link px-2 py-2 rounded-md">{{
+          <router-link to="/instance" class="bar-link px-2 py-2 rounded-md" style="color: white">{{
             $t("common.instances")
           }}</router-link>
 
           <router-link
             to="/environment"
             class="bar-link px-2 py-2 rounded-md"
+            style="color: white"
             >{{ $t("common.environments") }}</router-link
           >
           <router-link
             to="/setting/member"
             class="bar-link px-2 py-2 rounded-md"
+            style="color: white"
             >{{ $t("common.settings") }}</router-link
           >
         </div>
@@ -47,52 +50,30 @@
     <div>
       <div class="flex items-center space-x-3">
         <div
-          v-if="isDevFeatures"
-          class="hidden md:flex sm:flex-row items-center space-x-2 text-sm font-medium"
-        >
-          <span class="hidden lg:block font-normal text-accent">
-            {{ $t("subscription.plan.title") }}
-          </span>
-          <div
-            class="bar-link"
-            :class="currentPlan == 0 ? 'underline' : ''"
-            @click.prevent="switchToFree"
-          >
-            {{ $t("subscription.plan.free.title") }}
-          </div>
-          <div
-            class="bar-link"
-            :class="currentPlan == 1 ? 'underline' : ''"
-            @click.prevent="switchToTeam"
-          >
-            {{ $t("subscription.plan.team.title") }}
-          </div>
-        </div>
-        <div
           v-if="!isRelease"
           class="hidden md:flex sm:flex-row items-center space-x-2 text-sm font-medium"
         >
-          <span class="hidden lg:block font-normal text-accent">
+          <span class="hidden lg:block font-normal text-accent" style="color: white">
             {{ $t("settings.profile.role") }}
           </span>
           <div
             class="bar-link"
             :class="currentUser.role == 'OWNER' ? 'underline' : ''"
-            @click.prevent="switchToOwner"
+            @click.prevent="switchToOwner" style="color: white"
           >
             {{ $t("common.role.owner") }}
           </div>
           <div
             class="bar-link"
             :class="currentUser.role == 'DBA' ? 'underline' : ''"
-            @click.prevent="switchToDBA"
+            @click.prevent="switchToDBA" style="color: white"
           >
             {{ $t("common.role.dba") }}
           </div>
           <div
             class="bar-link"
             :class="currentUser.role == 'DEVELOPER' ? 'underline' : ''"
-            @click.prevent="switchToDeveloper"
+            @click.prevent="switchToDeveloper" style="color: white"
           >
             {{ $t("common.role.developer") }}
           </div>

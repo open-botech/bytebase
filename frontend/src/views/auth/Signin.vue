@@ -1,77 +1,23 @@
 <template>
-  <div class="mx-auto w-full max-w-sm">
+  <div class="mx-auto w-full max-w-sm" style="background: linear-gradient(1turn,rgba(1,66,102,.8),rgba(0,31,68,.8));">
     <div>
       <img
         class="h-12 w-auto"
         src="../../assets/logo-full.svg"
-        alt="Bytebase"
+        alt="Bytebase" style="margin: 30px auto ;"
       />
     </div>
 
-    <div class="mt-8 mb-3">
-      <template
-        v-for="authProvider in authProviderList"
-        :key="authProvider.type"
-      >
-        <n-button
-          class="w-full h-10 mb-2 tooltip-wrapper"
-          :disabled="!has3rdPartyLoginFeature"
-          @click.prevent="
-            () => {
-              state.activeAuthProvider = authProvider;
-              trySigninWithOAuth();
-            }
-          "
-        >
-          <img
-            class="w-5 mr-1"
-            :src="AuthProviderConfig[authProvider.type].iconPath"
-          />
-          <span class="text-center font-semibold align-middle">
-            {{
-              authProviderList.length == 1
-                ? $t("auth.sign-in.gitlab")
-                : authProvider.name
-            }}
-          </span>
-          <span v-if="isDemo" class="tooltip">{{
-            $t("auth.sign-in.gitlab-demo")
-          }}</span>
-          <span v-else-if="!has3rdPartyLoginFeature" class="tooltip">{{
-            $t("subscription.features.bb-feature-3rd-party-login.login")
-          }}</span>
-        </n-button>
-      </template>
 
-      <template v-if="authProviderList.length == 0">
-        <n-button class="w-full h-10 mb-2" disabled>
-          <img
-            class="w-5 mr-1"
-            :src="AuthProviderConfig['GITLAB_SELF_HOST'].iconPath"
-          />
-          <span class="text-center font-semibold align-middle">
-            {{ $t("auth.sign-in.gitlab-oauth") }}
-          </span>
-        </n-button>
-      </template>
-    </div>
 
-    <div class="relative">
-      <div class="absolute inset-0 flex items-center" aria-hidden="true">
-        <div class="w-full border-t border-control-border"></div>
-      </div>
-      <div class="relative flex justify-center text-sm">
-        <span class="px-2 bg-white text-control">{{ $t("common.or") }}</span>
-      </div>
-    </div>
 
     <div class="mt-2">
       <div class="mt-2">
-        <form class="space-y-6" @submit.prevent="trySignin">
+        <form class="space-y-6" @submit.prevent="trySignin" style="padding: 0px 20px">
           <div>
             <label
               for="email"
-              class="block text-sm font-medium leading-5 text-control"
+              class="block text-sm font-medium leading-5 text-control" style="color: white"
             >
               {{ $t("common.email") }}
               <span class="text-red-600">*</span>
@@ -91,17 +37,12 @@
           <div>
             <label
               for="password"
-              class="flex justify-between text-sm font-medium leading-5 text-control"
+              class="flex justify-between text-sm font-medium leading-5 text-control" style="color: white"
             >
               <div>
                 {{ $t("common.password") }}
                 <span class="text-red-600">*</span>
               </div>
-              <router-link
-                to="/auth/password-forgot"
-                class="text-sm font-normal text-control-light hover:underline focus:outline-none"
-                >{{ $t("auth.sign-in.forget-password") }}</router-link
-              >
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
@@ -138,12 +79,6 @@
           }}</span>
         </template>
         <template v-else>
-          <span class="pl-2 bg-white text-control">{{
-            $t("auth.sign-in.new-user")
-          }}</span>
-          <router-link to="/auth/signup" class="accent-link bg-white px-2">{{
-            $t("common.sign-up")
-          }}</router-link>
         </template>
       </div>
     </div>
